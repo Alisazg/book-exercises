@@ -3,8 +3,8 @@
 # performed using `dplyr` (do not directly access or manipulate the data frames)
 
 # Install and load the "fueleconomy" package
-#install.packages("devtools")
-#devtools::install_github("hadley/fueleconomy")
+install.packages("devtools")
+devtools::install_github("hadley/fueleconomy")
 library(fueleconomy)
 
 # Install and load the "dplyr" library
