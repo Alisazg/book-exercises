@@ -1,0 +1,21 @@
+---
+title: "R Markdown Demo"
+author: "Alisa"
+date: "2/11/2020"
+output: html_document
+---
+
+##This is my report
+I like writing **report**
+```{r example, include = FALSE} 
+numbers <- runif(1:100)
+hist(numbers)
+numbers_mean <- mean(numbers)
+img_url <- "![puppies](https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)"
+img_markdown <- paste0("![puppies](", img_url,")")
+```
+The mean of the numbers happens to be `r numbers_mean`.
+`r image markdown`
+```{r other_chunk}
+print(numbers)
+```
