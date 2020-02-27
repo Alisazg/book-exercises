@@ -2,27 +2,35 @@
 
 # Load the `shiny` package
 
-
+#library("shiny")
 # Define a new `ui` variable. This variable should be assigned a `fluidPage()` layout
 # The `fluidPage()` layout should be passed the following:
 
-  
-  # A `titlePanel()` layout with the text "Cost Calculator"
+  ui <- fluidPage(
+    # A `titlePanel()` layout with the text "Cost Calculator"
+    titlePanel("Cost Calculator"),
+    # A `numericInput()` widget with the label "Price (in dollars)"
+    # It should have a default value of 0 and a minimum value of 0
+    # Hint: look up the function's arguments in the documentation!
+    numericInput(inputId = "price", label = "Price (in dollars)", value = 0, min = 0),
+    # A second `numericInput()` widget with the label "Quantity"
+    # It should have a default value of 1 and a minimum value of 1  
+    numericInput(inputId  = "quantity", label = "Quantity", value = 1, min = 1),
+    # The word "Cost", strongly bolded
+    p(strong("Cost")),
+    # A `textOutput()` output of a calculated value labeled `cost`
+    textOutput(outputId = "cost")
+  )
 
-  
-  # A `numericInput()` widget with the label "Price (in dollars)"
-  # It should have a default value of 0 and a minimum value of 0
-  # Hint: look up the function's arguments in the documentation!
+  server <- function(input_list,output_list){
+    output_list$cost <- renderText({
+      cost <- input_list$price*input_list$quantity
+      return(paste0("$",cost))
+    })
+  }
+ shinyApp(ui = ui, server = server)
 
-  
-  # A second `numericInput()` widget with the label "Quantity"
-  # It should have a default value of 1 and a minimum value of 1  
 
-  
-  # The word "Cost", strongly bolded
-
-  
-  # A `textOutput()` output of a calculated value labeled `cost`
 
 
 
